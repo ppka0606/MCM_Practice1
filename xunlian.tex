@@ -243,31 +243,33 @@ The symbols to be used in this chapter are shown in Table \ref{tb:Variables2}.
 \toprule
 \textbf{Symbols}   & \textbf{Description}                                &\textbf{Unit}   \\
 \midrule
-$FMR$              & field metabolic rates                               &kJ/days             \\
+$R_{FM}$           & field metabolic rates                               &kJ/days             \\
 $DMI$              & dry matter intake                                   &g                   \\
 $FMI$              & fresh matter intake                                 &g                   \\
 $M$                & weight                                              &g                   \\
-$FR$               & feeding rates                                       &(DMI)/d or (FMI)/d  \\
-$ME$               & the metabolisable energy content of animals' diet   &kJ/g                \\
-$F$                & the food a dragon need to eat a day                 &g                   \\
+$R_{F}$            & feeding rates                                       &(DMI)/d or (FMI)/d  \\
+$E_{d}$            & the metabolisable energy content of animals' diet   &kJ/g                \\
+$G$                & the food a dragon need to eat a day                 &g                   \\
 \bottomrule
 \end{tabular}\label{tb:Variables2}
 \end{table}
 
 One of the first questions people ask about a wild animal is “What does it eat?” To answer what does dragon eat 
-and how much energy it get from food, we refer to Kenneth A. Nagy's data.\\
+and how much energy it get from food, we refer to Kenneth A. Nagy's data. Referring to feeding rates by 79 species of mammals, 95 species of birds and 55 species of reptiles  estimated from doubly labeled water- based measurements, we get the following model to measure the intake of a dragon.\\
+
 Feeding rates mean intake of both dry matter and fresh matter. 
 Feeding rates are those needed to provide the metabolizable energy the animals burn in the field, so they represent “steady-state” conditions.
 The FMR for a species, in units of kJ/d, was divided by the metabolisable energy content of its diet, 
 either in units of metabolisable kJ/g dry matter or in units of metabolisable kJ/g fresh matter, 
 to calculate feeding rates in units of g dry matter intake (DMI)/d or in units of g fresh matter intake (FMI)/d.
 \begin{equation}
-FR = \frac{FMR}{ME}
+R_{F} = \frac{R_{FM}}{E_{d}}
 \end{equation}
-After analyzing a large number of data, the author obtains this formula: FR (DMI/d) satisfy
+After analyzing a large number of data, the author obtains this formula: $R_{F} $ (DMI/d) satisfy
 \begin{equation}
-FR = 0.323 \cdot M^{0.744}
+R_{F} = 0.323 \cdot M^{0.744}
 \end{equation}
+
 Because DMI means dry matter intake, to calculate the weight of dragons' food, it should be devided by moisture content.
 Dragons's prey includes carnivores and herbivores, so there are 68\% water for an omnivore’s diet which means dragons eat omnivores.
 According to this paper, meat contains energy 1490 cal/pound on average. And it is easily transformed to 13.7965 kJ/g.
@@ -277,6 +279,7 @@ F = \frac{0.323 \cdot M^{0.744}}{1-68\%}\cdot13.7965
 \end{equation}
 
 And one $kJ$ can be transformed to 238.9 calorie. The energy a dragon need $238.9F$ have the relationship with his weight like above.
+After substituting data into formulas above, an adult dragon that 100 tons needs to eat $916.299$ calories (3.83549$kJ$) a day.
 
 
 ~\ \
@@ -371,7 +374,7 @@ On the basis of the above model, some additional assumptions are made in order t
 The variables we used in this model are listed in Table\ref{tb:Variables4}
 
 
-\begin{table}[h]
+\begin{table}[!htbp]
 \centering
 \caption{Symbols in Environment Model}
 \begin{tabular}{cll}
@@ -432,7 +435,7 @@ We found that when $L = 10$ and $E = 34$, the ecosystem will reach equilibrium, 
 \end{figure}
 The images also show that when dragons were first put into the ecosystem, the animal population declined rapidly. If $E<34$, then the ecosystem will reach equilibrium in 300 days approximately. Otherwise, the number of animals would continue to decline until the dragons left after about 1500 days, and then equalized again after about 400 days.
 
-We finally chose $E=40$ to describe the daily food requirement of the dragon, and we will give concrete arguments to explain the rationality of this choice in the following paragraphs.
+We finally chose $E=34$ to describe the daily food requirement of the dragon, and we will give concrete arguments to explain the rationality of this choice in the following paragraphs.
 
 
 ~\ \
@@ -449,40 +452,49 @@ We use a energy transfer model to establish the relationship between energy cons
 \caption{Symbols in Environment Model}
 \begin{tabular}{cl}
 \toprule
-\textbf{Symbols}   & \textbf{Description}                                   \\
+\textbf{Symbols}   & \textbf{Description}                                         \\
 \midrule
-$GR$               & Ground radiation                                            \\
-$\rho$             & Utility rate of luminous energy, range from $0.5\%$ to $2\%$                             \\
-$S$                & The scope of the dragon's daily activities, we assume $S=150Km^{2}$       \\
-$K$                & Energy transfer efficiency between different trophic levels, range from $10\%$ to $20\%$ \\
-$E_{0}$            & The Energy a 100-tons dragon needs every day                \\
-$S_{0}$            & The specific energy for $S=1$                               \\
+$G_{R}$            & Ground radiation                                             \\
+$\rho$             & Utility rate of luminous energy                             \\
+$S$                & The scope of the dragon's daily activities,                  \\
+$K$                & Energy transfer efficiency between different trophic levels  \\
+$E_{0}$            & The Energy a 100-tons dragon needs every day                 \\
+$S_{0}$            & The specific energy for $S=1$                                \\
 \bottomrule
 \end{tabular}\label{tb:Variables5}
 \end{table}
+Explanation:
+\begin{itemize}
+\item $\rho$ range from $0.5\%$ to $2\%$
+\item $K$ we assume $S=150Km^{2}$
+\item $E_{0}$ range from $10\%$ to $20\%$
+\end{itemize}
 
 From (8), we can figure out that
 \begin{equation}
-    E_{0}=3.83549\cdot 10^{8}KJ
+    E_{0}=3.83549\cdot 10^{8}kJ
 \end{equation}
 
 From the privious model, we have
 \begin{equation}
     E_{0}=34\cdot S_{0}
 \end{equation}
+
 Then
 \begin{equation}
-    S_{0}=1.12808\cdot 10^{7}KJ
+    S_{0}=1.12808\cdot 10^{7}kJ
 \end{equation}
 
 In order to achieve ecological balance, we have the following equation:
 \begin{equation}
-    E_{0}=\frac{2}{3}\cdot \frac{S\cdot GR\cdot \rho}{365}\cdot K^{2}
+    E_{0}=\frac{2}{3}\cdot \frac{S\cdot G_{R}\cdot \rho}{365}\cdot K^{2}
 \end{equation}
+
 Let $\rho=1\%$, we can figure out that
 \begin{equation}
-    GR\approx 5.5998\cdot 10^{9} J/year
+    G_{R}\approx 5.5998\cdot 10^{9} J/year
 \end{equation}
+
 This corresponds exactly to the ground radiation of the grassland ecosystem in the temperate zone (approximately $5\cdot 10^{9} J/year$)
 
 \begin{figure}[!htbp]
@@ -493,10 +505,10 @@ This corresponds exactly to the ground radiation of the grassland ecosystem in t
 
 At the same time, we can calculate $S_{0}$ again under this condition by the following equation:
 \begin{equation}
-    \frac{2}{3}\cdot \frac{S\cdot GR\cdot \rho}{365}\cdot K = 24 \cdot S_{0}
+    \frac{2}{3}\cdot \frac{S\cdot G_{R}\cdot \rho}{365}\cdot K = 24 \cdot S_{0}
 \end{equation}
 
-Figure out that $S_{0}=2.0845\cdot 10^{7}KJ$.
+Figure out that $S_{0}=2.0845\cdot 10^{7}kJ$.
 Though there is a certain deviation between this result and our previous results, they are on the same order of magnitude, so the error could be accepted.
 This also validates the reasonability of taking $E=34$
 
